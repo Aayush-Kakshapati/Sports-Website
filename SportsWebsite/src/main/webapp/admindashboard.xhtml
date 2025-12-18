@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="WEB-INF/templates/main.xhtml">
+    <ui:define name="title">Admin Dashboard - Sports World</ui:define>
+
+    <ui:define name="content">
+        <div class="admin-dashboard">
+
+            <p:growl id="growl" autoUpdate="true" showDetail="true" showSummary="true" life="2000" />
+
+            <div class="dashboard-header">
+                <h2>Admin Dashboard</h2>
+                <h:form id="logoutForm" styleClass="logout-form">
+                    <p:commandButton value="Logout" action="#{loginBean.logout}" styleClass="btn-logout" />
+                </h:form>
+            </div>
+
+            <!-- Add Sport Form -->
+            <div class="admin-section">
+                <h3>Add New Sport</h3>
+                <h:form id="addSportForm">
+                    <p:tabView>
+                        <p:tab title="Basic Information">
+                            <p:panelGrid columns="3" styleClass="form-grid ui-fluid"
+                                columnClasses="label-column,input-column,message-column">
+                                <p:outputLabel for="sportName" value="Sport Name:" />
+                                <p:inputText id="sportName" value="#{sportBean.newSport.sportName}" required="true"
+                                    requiredMessage="#{msg['validation.required']}" />
+                                <p:message for="sportName" />
+
+                                <p:outputLabel for="sportDescription" value="Description:" />
+                                <p:inputTextarea id="sportDescription" value="#{sportBean.newSport.description}"
+                                    rows="3" required="true" requiredMessage="#{msg['validation.required']}" />
+                                <p:message for="sportDescription" />
+                            </p:panelGrid>
+                        </p:tab>
+
+                        <p:tab title="Sport Details">
+                            <p:panelGrid columns="3" styleClass="form-grid ui-fluid"
+                                columnClasses="label-column,input-column,message-column">
+                                <p:outputLabel for="rules" value="Rules:" />
+                                <p:inputTextarea id="rules" value="#{sportDetailBean.rules}" rows="4" />
+                                <p:message for="rules" />
+
+                                <p:outputLabel for="history" value="History:" />
+                                <p:inputTextarea id="history" value="#{sportDetailBean.history}" rows="4" />
+                                <p:message for="history" />
+
+                                <p:outputLabel for="equipment" value="Equipment:" />
+                                <p:inputTextarea id="equipment" value="#{sportDetailBean.equipment}" rows="4" />
+                                <p:message for="equipment" />
+
+                                <p:outputLabel for="famousPlayers" value="Famous Players:" />
+                                <p:inputTextarea id="famousPlayers" value="#{sportDetailBean.famousPlayers}" rows="4" />
+                                <p:message for="famousPlayers" />
+                            </p:panelGrid>
+                        </p:tab>
+                    </p:tabView>
+
+                    <div class="form-actions div-mt">
+                        <p:commandButton value="Add Sport" action="#{sportBean.saveSport}"
+                            update=":sportsForm:sportsList :growl :addSportForm" validateClient="true"
+                            styleClass="btn-primary" />
+                    </div>
+                </h:form>
+            </div>
+
+            <!-- Search and List Sports -->
+            <div class="admin-section div-mt">
+                <h3>Manage Sports</h3>
+                <h:form id="sportsForm">
+                    <div class="search-container">
+                        <p:inputText id="searchInput" value="#{sportBean.searchTerm}" placeholder="Search sports..." />
+                        <p:commandButton value="Search" action="#{sportBean.searchSports}" update="sportsList"
+                            styleClass="btn-secondary" />
+                    </div>
+
+                    <p:dataList id="sportsList" value="#{sportBean.sports}" var="sport" type="unordered"
+                        styleClass="sports-grid">
+                        <div class="sport-card">
+                            <div class="card-header">
+                                <h4>#{sport.sportName}</h4>
+                                <div class="card-actions">
+                                    <p:commandButton icon="pi pi-pencil"
+                                        action="#{sportBean.selectSportForEditing(sport)}"
+                                        oncomplete="PF('sportDialog').show()" 
+                                        update=":editForm :growl"
+                                        styleClass="btn-edit" title="Edit Sport">
+                                    </p:commandButton>
+                                    <p:commandButton icon="pi pi-trash" 
+                                    	action="#{sportBean.deleteSport}"
+                                        update=":sportsForm:sportsList :growl" 
+                                        styleClass="btn-delete" title="Delete Sport">
+                                        <f:setPropertyActionListener value="#{sport.sportId}" 
+                                            target="#{sportBean.selectedSportId}" />
+                                        <p:confirm header="Delete Sport" 
+                                            message="Are you sure you want to delete this sport?"
+                                            icon="pi pi-exclamation-triangle" />
+                                    </p:commandButton>
+                                </div>
+                            </div>
+                            <div class="sport-info">
+                                <p>#{sport.description}</p>
+                                <h:link outcome="details" styleClass="btn-view">
+                                    <f:param name="sportId" value="#{sport.sportId}" />
+                                    View Details
+                                </h:link>
+                            </div>
+                        </div>
+                    </p:dataList>
+                </h:form>
+            </div>
+        </div>
+
+        <!-- Edit Sport Dialog -->
+        <h:form id="editForm">
+            <p:dialog header="Edit Sport" widgetVar="sportDialog" modal="true" showEffect="fade" hideEffect="fade"
+                responsive="true" width="800" closeOnEscape="true" styleClass="edit-dialog">
+                <div class="p-fluid">
+                    <p:tabView>
+                        <p:tab title="Basic Information">
+                            <p:panelGrid columns="3" styleClass="form-grid ui-fluid" 
+                                columnClasses="label-column,input-column,message-column">
+                                <p:outputLabel for="editSportName" value="Sport Name:" />
+                                <h:outputText id="editSportName" value="#{sportBean.selectedSport.sportName}" styleClass="font-bold" />
+                                <p:message for="editSportName" />
+
+                                <p:outputLabel for="editDescription" value="Description:" />
+                                <p:inputTextarea id="editDescription" value="#{sportBean.selectedSport.description}" 
+                                    rows="3" required="true" requiredMessage="#{msg['validation.required']}" 
+                                    autoResize="false" />
+                                <p:message for="editDescription" />
+                            </p:panelGrid>
+                        </p:tab>
+                        
+                        <p:tab title="Sport Details">
+                            <p:panelGrid columns="3" styleClass="form-grid ui-fluid" 
+                                columnClasses="label-column,input-column,message-column">
+                                <p:outputLabel for="editRules" value="Rules:" />
+                                <p:inputTextarea id="editRules" value="#{sportBean.currentSportDetail.rules}" 
+                                    rows="4" autoResize="false" />
+                                <p:message for="editRules" />
+                                
+                                <p:outputLabel for="editHistory" value="History:" />
+                                <p:inputTextarea id="editHistory" value="#{sportBean.currentSportDetail.history}" 
+                                    rows="4" autoResize="false" />
+                                <p:message for="editHistory" />
+                                
+                                <p:outputLabel for="editEquipment" value="Equipment:" />
+                                <p:inputTextarea id="editEquipment" value="#{sportBean.currentSportDetail.equipment}" 
+                                    rows="4" autoResize="false" />
+                                <p:message for="editEquipment" />
+                                
+                                <p:outputLabel for="editFamousPlayers" value="Famous Players:" />
+                                <p:inputTextarea id="editFamousPlayers" value="#{sportBean.currentSportDetail.famousPlayers}" 
+                                    rows="4" autoResize="false" />
+                                <p:message for="editFamousPlayers" />
+                            </p:panelGrid>
+                        </p:tab>
+                    </p:tabView>
+                    
+                    <div class="form-actions div-mt">
+                        <p:commandButton value="Update Sport" action="#{sportBean.updateSport}" 
+                            oncomplete="if (!args.validationFailed) PF('sportDialog').hide()"
+                            update=":sportsForm:sportsList :growl :editForm" 
+                            validateClient="true"
+                            styleClass="btn-primary margin-r" />
+                        <p:commandButton value="Cancel" onclick="PF('sportDialog').hide()" 
+                            styleClass="btn-secondary" type="button" />
+                    </div>
+                </div>
+            </p:dialog>
+        </h:form>
+
+        <!-- Confirmation Dialog -->
+        <h:form>
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true">
+                <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+            </p:confirmDialog>
+        </h:form>
+    </ui:define>
+</ui:composition>
+
+</html>

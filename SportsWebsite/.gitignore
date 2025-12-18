@@ -1,0 +1,40 @@
+# ======================
+# Java
+# ======================
+*.class
+bin/
+out/
+
+# If using Maven or Gradle
+target/
+build/
+
+# ======================
+# IntelliJ IDEA
+# ======================
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# ======================
+# Database (local)
+# ======================
+*.db
+*.sqlite
+*.sqlite3
+*.mv.db
+*.trace.db
+
+# ======================
+# Config / Secrets
+# ======================
+.env
+application.properties
+application.yml
+
+# ======================
+# OS files
+# ======================
+.DS_Store
+Thumbs.db

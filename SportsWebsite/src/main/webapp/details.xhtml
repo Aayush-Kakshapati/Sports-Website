@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="WEB-INF/templates/main.xhtml">
+    <ui:define name="title">Sport Details - Sports World</ui:define>
+    
+    <ui:define name="content">
+        <f:metadata>
+            <f:viewParam name="sportId" value="#{sportDetailBean.sportId}" />
+            <f:viewAction action="#{sportDetailBean.loadSportDetail}" />
+        </f:metadata>
+        
+        <div class="sport-details-content">
+            <!-- Dynamic content from SportDetailBean -->
+            <h1>#{sportDetailBean.name}</h1>
+            
+            <div class="sport-description">
+                <p>#{sportDetailBean.description}</p>
+            </div>
+            
+            <div class="detail-sections">
+                <div class="detail-section">
+                    <h2>Rules</h2>
+                    <div class="detail-content">
+                        <p>#{sportDetailBean.rules}</p>
+                    </div>
+                </div>
+                
+                <div class="detail-section">
+                    <h2>History</h2>
+                    <div class="detail-content">
+                        <p>#{sportDetailBean.history}</p>
+                    </div>
+                </div>
+                
+                <div class="detail-section">
+                    <h2>Equipment</h2>
+                    <div class="detail-content">
+                        <p>#{sportDetailBean.equipment}</p>
+                    </div>
+                </div>
+                
+                <div class="detail-section">
+                    <h2>Famous Players</h2>
+                    <div class="detail-content">
+                        <p>#{sportDetailBean.famousPlayers}</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="navigation-links">
+                <h:link outcome="/categories.xhtml" styleClass="btn btn-secondary">
+                    Back to Categories
+                </h:link>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
+</html> 

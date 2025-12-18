@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="WEB-INF/templates/main.xhtml">
+    <ui:define name="title">Sports Categories - Sports World</ui:define>
+    
+    <ui:define name="content">
+        <div class="categories-content">
+            <h1>Sports Categories</h1>
+            
+            <!-- Search Box -->
+            <div class="search-container">
+                <h:form>
+                    <p:inputText id="searchInput" placeholder="Search for a sport..." value="#{sportBean.searchTerm}" />
+                    <p:commandButton value="Search" action="#{sportBean.searchSports}" update="sportsList" />
+                </h:form>
+            </div>
+            
+            <!-- Sports List -->
+            <h:panelGroup id="sportsList">
+                <div class="sport-list">
+                    <!-- Display sports from the SportBean -->
+                    <ui:repeat value="#{sportBean.sports}" var="sport">
+                        <div class="sport-item">
+                            <div class="sport-info">
+                                <h2>#{sport.sportName}</h2>
+                                <p>#{sport.description}</p>
+                                <h:link outcome="/details.xhtml" styleClass="btn btn-primary">
+                                    <f:param name="sportId" value="#{sport.sportId}" />
+                                    View Details
+                                </h:link>
+                            </div>
+                        </div>
+                    </ui:repeat>
+                    
+                    <!-- Display message if no sports found -->
+                    <h:panelGroup rendered="#{empty sportBean.sports}">
+                        <div class="no-results">
+                            <p>No sports found matching your search criteria.</p>
+                        </div>
+                    </h:panelGroup>
+                </div>
+            </h:panelGroup>
+        </div>
+    </ui:define>
+</ui:composition>
+</html> 

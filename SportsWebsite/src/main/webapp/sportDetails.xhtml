@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+</ui:composition template="WEB-INF/templates/main.xhtml">
+
+<ui:define name="title">#{sportDetailBean.sport.sportName} - Sports World</ui:define>
+
+<ui:define name="content">
+    <f:metadata>
+        <f:viewParam name="sportId" value="#{sportDetailBean.sportId}" />
+        <f:viewAction action="#{sportDetailBean.loadSportDetail}" />
+    </f:metadata>
+
+    <h:panelGroup rendered="#{sportDetailBean.sport != null}">
+        <!-- Sport Details -->
+        <div class="sport-details">
+            <div class="sport-details-header">
+                <h2>#{sportDetailBean.sport.sportName}</h2>
+            </div>
+
+            <div class="sport-description">
+                <p>#{sportDetailBean.sport.description}</p>
+            </div>
+
+            <!-- Rules Section -->
+            <div class="details-section">
+                <h3>Rules</h3>
+                <p>#{sportDetailBean.sportDetail.rules}</p>
+            </div>
+
+            <!-- History Section -->
+            <div class="details-section">
+                <h3>History</h3>
+                <p>#{sportDetailBean.sportDetail.history}</p>
+            </div>
+
+            <!-- Equipment Section -->
+            <div class="details-section">
+                <h3>Equipment</h3>
+                <p>#{sportDetailBean.sportDetail.equipment}</p>
+            </div>
+
+            <!-- Famous Players Section -->
+            <div class="details-section">
+                <h3>Famous Players</h3>
+                <p>#{sportDetailBean.sportDetail.famousPlayers}</p>
+            </div>
+
+            <!-- Back Button -->
+            <div class="action-buttons">
+                <h:link outcome="/sports.xhtml" styleClass="btn-primary">Back to Sports</h:link>
+            </div>
+        </div>
+
+        <!-- Admin Panel (for editing sport details) -->
+        <div class="admin-panel">
+            <h3>Edit Sport Details</h3>
+
+            <h:form id="editSportDetailsForm">
+                <div class="form-group">
+                    <h:outputLabel for="rules" value="Rules:" />
+                    <h:inputTextarea id="rules" value="#{sportDetailBean.rules}" styleClass="form-control" rows="5" />
+                </div>
+
+                <div class="form-group">
+                    <h:outputLabel for="history" value="History:" />
+                    <h:inputTextarea id="history" value="#{sportDetailBean.history}" styleClass="form-control"
+                        rows="5" />
+                </div>
+
+                <div class="form-group">
+                    <h:outputLabel for="equipment" value="Equipment:" />
+                    <h:inputTextarea id="equipment" value="#{sportDetailBean.equipment}" styleClass="form-control"
+                        rows="5" />
+                </div>
+
+                <div class="form-group">
+                    <h:outputLabel for="famousPlayers" value="Famous Players:" />
+                    <h:inputTextarea id="famousPlayers" value="#{sportDetailBean.famousPlayers}"
+                        styleClass="form-control" rows="5" />
+                </div>
+
+                <h:commandButton value="Save Changes" action="#{sportDetailBean.saveSportDetail}"
+                    styleClass="btn-primary" />
+
+                <p:messages id="messages" showDetail="true" closable="true" />
+            </h:form>
+        </div>
+    </h:panelGroup>
+
+    <!-- Message if sport is not found -->
+    <h:panelGroup rendered="#{sportDetailBean.sport == null}">
+        <div class="error-message">
+            <h3>Sport Not Found</h3>
+            <p>Sorry, the sport you're looking for could not be found. It may have been removed or the ID is incorrect.
+            </p>
+            <h:link outcome="/sports.xhtml" styleClass="btn-primary">Return to Sports List</h:link>
+        </div>
+    </h:panelGroup>
+</ui:define>
+</ui:composition>
+
+</html>

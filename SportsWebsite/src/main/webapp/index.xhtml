@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="WEB-INF/templates/main.xhtml">
+    <ui:define name="title">Home - Sports World</ui:define>
+    
+    <ui:define name="content">
+        <div class="home-content">
+            <div class="hero-section">
+                <h1>Welcome to Sports World</h1>
+                <p>Your ultimate guide to sports around the world</p>
+                <h:link outcome="/categories.xhtml" styleClass="btn btn-primary">
+                    Explore Sports
+                </h:link>
+            </div>
+            
+            <div class="about-preview">
+                <h2>About Sports World</h2>
+                <p>Sports World is your comprehensive resource for information about various sports from around the globe. 
+                Our platform provides detailed insights into the rules, history, equipment, and famous players of different sports.</p>
+                <p>Whether you're a sports enthusiast looking to deepen your knowledge or a newcomer wanting to learn about a sport,
+                our website has you covered with accurate and detailed information.</p>
+            </div>
+            
+            <div class="featured-sports">
+                <h2>Featured Sports</h2>
+                <div class="sport-cards">
+                    <!-- Display featured sports from SportBean, limited to 3 -->
+                    <ui:repeat value="#{sportBean.sports}" var="sport" size="3">
+                        <div class="sport-card">
+                            <h3>#{sport.sportName}</h3>
+                            <p>#{sport.description}</p>
+                            <h:link outcome="/details.xhtml" styleClass="btn btn-secondary">
+                                <f:param name="sportId" value="#{sport.sportId}" />
+                                Learn More
+                            </h:link>
+                        </div>
+                    </ui:repeat>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
+</html> 

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="WEB-INF/templates/main.xhtml">
+    <ui:define name="title">#{msg['contact.title']} - Sports World</ui:define>
+    
+    <ui:define name="content">
+        <style>
+            .ui-message {
+                display: block;
+                margin-top: 0.5rem; /* Adjust this value for more/less space */
+            }
+        </style>
+        <div class="contact-content">
+            <h1>#{msg['contact.title']}</h1>
+            
+            <div class="contact-intro">
+                <p>#{msg['contact.subtitle']}</p>
+            </div>
+            
+            <!-- Global Messages -->
+            <p:messages id="messages" showDetail="true" closable="true" globalOnly="true" />
+            
+            <div class="contact-container">
+                <div class="contact-form">
+                    <h2>#{msg['contact.form']}</h2>
+                    <h:form id="contactForm">
+                        <div class="form-group">
+                            <p:outputLabel for="name" value="#{msg['contact.name']}" />
+                            <p:inputText id="name" value="#{contactBean.name}" 
+                                required="true" 
+                                requiredMessage="#{msg['validation.required']}"
+                                maxlength="100"
+                                placeholder="#{msg['contact.name']}" 
+                                styleClass="form-control" />
+                            <p:message for="name" />
+                        </div>
+                        
+                        <div class="form-group">
+                            <p:outputLabel for="email" value="#{msg['contact.email']}" />
+                            <p:inputText id="email" value="#{contactBean.email}" 
+                                required="true" 
+                                requiredMessage="#{msg['validation.required']}"
+                                validatorMessage="#{msg['validation.email']}"
+                                maxlength="100"
+                                placeholder="#{msg['contact.email']}" 
+                                styleClass="form-control">
+                                <f:validateRegex pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" />
+                            </p:inputText>
+                            <p:message for="email" />
+                        </div>
+                        
+                        <div class="form-group">
+                            <p:outputLabel for="subject" value="#{msg['contact.subject']}" />
+                            <p:inputText id="subject" value="#{contactBean.subject}" 
+                                required="true" 
+                                requiredMessage="#{msg['validation.required']}"
+                                maxlength="200"
+                                placeholder="#{msg['contact.subject']}" 
+                                styleClass="form-control" />
+                            <p:message for="subject" />
+                        </div>
+                        
+                        <div class="form-group">
+                            <p:outputLabel for="message" value="#{msg['contact.message']}" />
+                            <p:inputTextarea id="message" value="#{contactBean.message}" 
+                                required="true" 
+                                requiredMessage="#{msg['validation.required']}"
+                                maxlength="1000"
+                                placeholder="#{msg['contact.message']}" 
+                                rows="5" 
+                                styleClass="form-control" />
+                            <p:message for="message" />
+                        </div>
+                        
+                        <div class="form-actions">
+                            <p:commandButton value="#{msg['contact.send']}" 
+                                action="#{contactBean.sendMessage}" 
+                                update="messages contactForm"
+                                styleClass="btn btn-primary" />
+                        </div>
+                    </h:form>
+                </div>
+                
+                <div class="contact-info">
+                    <h2>#{msg['contact.alternative']}</h2>
+                    <div class="info-item">
+                        <i class="pi pi-envelope"></i>
+                        <span>#{msg['contact.emailAddress']}</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="pi pi-phone"></i>
+                        <span>#{msg['contact.phone']}</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="pi pi-map-marker"></i>
+                        <span>#{msg['contact.address']}</span>
+                    </div>
+                    
+                    <div class="social-connect">
+                        <h3>#{msg['contact.connect']}</h3>
+                        <div class="social-icons">
+                            <a href="#" aria-label="Facebook"><i class="pi pi-facebook"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="pi pi-twitter"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="pi pi-instagram"></i></a>
+                            <a href="#" aria-label="YouTube"><i class="pi pi-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
+</html> 

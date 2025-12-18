@@ -1,0 +1,1003 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #2C3E50;
+    background-color: #F5F7FA;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#page {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#content {
+    flex: 1;
+    padding: 2rem 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+a {
+    text-decoration: none;
+    color: #1976D2;
+}
+
+ul {
+    list-style: none;
+}
+
+h1, h2, h3, h4 {
+    margin-bottom: 1rem;
+    color: #1976D2;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #1976D2;
+    color: white;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+.btn:hover {
+    background-color: #1565C0;
+}
+
+.btn-primary {
+    background-color: #1976D2;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #FFA726;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #F57C00;
+}
+
+/* Header Styles */
+#header {
+    background-color: #1976D2;
+    color: white;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0;
+    color: white;
+}
+
+#header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#main-nav ul {
+    display: flex;
+    gap: 1.5rem;
+}
+
+#main-nav a {
+    color: white;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+#main-nav a:hover {
+    color: #FFA726;
+}
+
+/* Footer Styles */
+#footer {
+    background-color: #1976D2;
+    color: white;
+    padding: 2rem 0;
+    margin-top: auto;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    color: white;
+    font-size: 1.2rem;
+}
+
+/* Home Page Styles */
+.home-content {
+    padding: 2rem 0;
+}
+
+.hero-section {
+    background: url("#{resource['images/sportimg.jpg']}") no-repeat center center;
+    background-size: cover;
+    min-height: 500px;
+    color: white;
+    padding: 3rem 2rem;
+    border-radius: 8px;
+    display: flex;                
+    flex-direction: column;       
+    justify-content: center;      
+    align-items: center;          
+    text-align: center;      
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 1.5rem;
+}
+
+.about-preview {
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.featured-sports h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #0056b3;
+}
+
+.sport-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.sport-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    border-top: 4px solid #eeb55a;
+}
+
+.sport-card:hover {
+    transform: translateY(-5px);
+}
+
+.sport-card h3 {
+    margin-bottom: 0.5rem;
+    color: #1976D2;
+}
+
+.sport-card p {
+    margin-bottom: 1rem;
+    color: #2C3E50;
+}
+
+/* Categories Page Styles */
+.categories-content {
+    padding: 2rem 0;
+}
+
+.categories-content h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #0056b3;
+}
+
+.search-container {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.search-container input {
+    padding: 0.5rem 1rem;
+    width: 60%;
+    max-width: 500px;
+    border: 2px solid #1976D2;
+    border-radius: 4px;
+    margin-right: 0.5rem;
+}
+
+.sport-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.sport-item {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #FFA726;
+}
+
+.sport-info h2 {
+    margin-bottom: 0.5rem;
+    color: #1976D2;
+}
+
+.sport-info p {
+    margin-bottom: 1rem;
+    color: #2C3E50;
+}
+
+/* Sport Details Page Styles */
+.sport-details-content {
+    padding: 2rem 0;
+}
+
+.sport-details-content h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #0056b3;
+}
+
+.sport-description {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    font-size: 1.1rem;
+    color: #2c3e50;
+}
+
+.detail-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.detail-section {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.detail-section h2 {
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    color: #1e3a8a;
+}
+
+.detail-content ul {
+    list-style: disc;
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+}
+
+.navigation-links {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    #header .container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    #main-nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .sport-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .search-container input {
+        width: 100%;
+    }
+}
+
+/* Messages */
+.message {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+}
+
+.message-info {
+    background-color: #E3F2FD;
+    border-color: #1976D2;
+    color: #0D47A1;
+}
+
+.message-error {
+    background-color: #FFEBEE;
+    border-color: #EF5350;
+    color: #C62828;
+}
+
+/* About Page Styles */
+.about-content {
+    padding: 2rem 0;
+}
+
+.about-content h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.about-section {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.about-section h2 {
+    color: #1e3a8a;
+    margin-bottom: 1rem;
+}
+
+.about-section ul {
+    list-style: disc;
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* Contact Page Styles */
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.contact-content {
+    padding: 2rem 0;
+}
+
+.contact-content h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.contact-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    color: #6c757d;
+}
+
+.contact-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+.contact-form, .contact-info {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.info-item i {
+    margin-right: 1rem;
+    color: #1e3a8a;
+    font-size: 1.2rem;
+}
+
+.social-connect {
+    margin-top: 2rem;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #1e3a8a;
+    color: white;
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+
+.social-icons a:hover {
+    background-color: #0275d8;
+    transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Login Page Styles */
+.login-container {
+    background-color: white;
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 2rem auto;
+    border: 2px solid #1976D2;
+}
+
+.login-container h1 {
+    text-align: center;
+    color: #1976D2;
+    margin-bottom: 2rem;
+    font-size: 1.75rem;
+}
+
+.login-container .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.login-container .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.login-container .form-group input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid #1976D2;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.login-container .form-group input:focus {
+    outline: none;
+    border-color: #FFA726;
+    box-shadow: 0 0 0 2px rgba(255, 167, 38, 0.25);
+}
+
+.login-container .btn-primary {
+    width: 100%;
+    padding: 0.875rem;
+    background-color: #1976D2;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.login-container .btn-primary:hover {
+    background-color: #1565C0;
+}
+
+.login-container .messages-container {
+    margin-top: 1rem;
+}
+
+.login-container .messages-container .error-message {
+    background-color: #fff5f5;
+    border: 1px solid #feb2b2;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    margin-top: 1rem;
+    text-align: center;
+    color: #dc3545;
+}
+
+/* Responsive adjustments for login page */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+
+    .login-container h1 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .login-container .form-group {
+        margin-bottom: 1rem;
+    }
+
+    .login-container .form-group input {
+        padding: 0.625rem 0.875rem;
+    }
+
+    .login-container .btn-primary {
+        padding: 0.75rem;
+    }
+}
+
+/* Admin Dashboard Styles */
+.admin-dashboard {
+    padding: 2rem 0;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.logout-form {
+    margin-left: auto;
+}
+
+.form-grid {
+    width: 100%;
+    max-width: 1000px;
+}
+
+.form-grid td {
+    padding: 0.75rem;
+}
+
+.form-grid td:first-child {
+    width: 20%;
+    min-width: 120px;
+    text-align: right;
+    padding-right: 1rem;
+}
+
+.form-grid td:nth-child(2) {
+    width: 80%;
+}
+
+.form-grid td:last-child {
+    width: 20%;
+    padding-left: 0.5rem;
+}
+
+.form-grid input, .form-grid textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.form-grid textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.form-grid .ui-message {
+    margin: 0.5rem;
+    display: block;
+}
+
+.ui-message-error {
+    background-color: #fff5f5;
+    border: 1px solid #feb2b2;
+    color: #c53030;
+    padding: 0.3rem;
+    max-width: 400px;
+    border-radius: 4px;
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+    .form-grid td {
+        display: block;
+        width: 100% !important;
+        text-align: left;
+        padding: 0.25rem 0;
+    }
+    
+    .form-grid td:first-child {
+        font-weight: bold;
+        margin-top: 1rem;
+    }
+    
+    .form-grid td:last-child {
+        margin-bottom: 1rem;
+    }
+}
+
+.sports-grid {
+    display: grid;
+    gap: 1rem;
+    padding: 0;
+}
+
+.card {
+    border: 1px solid #9da626;
+}
+
+.card-header {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.card-header h4 {
+    margin: 0;
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.card-actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.div-mt{
+	margin-top: 20px;
+}
+
+.btn-edit, .btn-delete {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-edit {
+    background-color: #ffc107;
+    color: #000;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.btn-edit:hover {
+    background-color: #e0a800;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
+}
+
+.edit-dialog .form-grid .label-column {
+    vertical-align: top;
+    font-weight: bold;
+    padding-top: 8px;
+}
+
+.edit-dialog .form-grid .input-column,
+.edit-dialog .form-grid .message-column {
+    vertical-align: top;
+}
+
+.edit-dialog .ui-inputtextarea {
+    width: 100%;
+    resize: vertical;
+}
+
+.sport-info {
+    color: #666;
+}
+
+.btn-view {
+    display: inline-block;
+    margin-top: 1rem;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.btn-view:hover {
+    text-decoration: underline;
+}
+
+.btn-logout {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+}
+
+.btn-logout:hover {
+    background-color: #5a6268;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+/* Responsive adjustments for admin dashboard */
+@media (max-width: 768px) {
+    .form-grid td {
+        display: block;
+        width: 100% !important;
+        padding: 0.5rem;
+    }
+    
+    .form-grid td:first-child {
+        padding-bottom: 0.25rem;
+    }
+    
+    .form-grid td:last-child {
+        padding-top: 0.25rem;
+    }
+    
+    .sport-card {
+        padding: 1rem;
+    }
+    
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .card-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
+
+/* Form Grid Styles */
+.form-grid {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.form-grid .label-column {
+    width: 150px;
+    text-align: right;
+    padding-right: 1rem;
+    white-space: nowrap;
+}
+
+.form-grid .input-column {
+    width: 100%;
+}
+
+.form-grid .message-column {
+    width: 500px;
+    padding-left: 0.5rem;
+}
+
+.form-grid .ui-message {
+    margin: 0;
+    display: block;
+}
+
+.form-grid input, 
+.form-grid textarea {
+    width: 100%;
+    max-width: 100%;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .form-grid .label-column,
+    .form-grid .input-column,
+    .form-grid .message-column {
+        width: 100%;
+        display: block;
+        text-align: left;
+        padding: 0.25rem 0;
+    }
+    
+    .form-grid .label-column {
+        font-weight: bold;
+        margin-top: 1rem;
+    }
+    
+    .form-grid .message-column {
+        margin-bottom: 1rem;
+    }
+}
+
+.font-bold {
+    font-weight: 600;
+    color: #1e3a8a;
+    font-size: 1.1rem;
+}
+
+/* Edit Dialog Styles */
+.edit-dialog {
+    min-width: 850px !important;  /* Increased from 700px to prevent overlapping */
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+}
+
+.edit-dialog .form-actions {
+    display: flex;
+    gap: 10px;  /* Adds space between buttons */
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+
+.edit-dialog .ui-dialog-content {
+    overflow-x: hidden;  /* Prevent horizontal scrolling */
+    padding: 20px;
+}
+
+.edit-dialog .form-grid .input-column {
+    width: 500px;  /* Increased from 400px for more space */
+    padding: 0 10px;
+}
+
+.edit-dialog .form-grid textarea,
+.edit-dialog .ui-inputtextarea {
+    width: 100% !important;
+    min-width: 500px;  /* Match input column width */
+}
+
+/* Ensure dialog overlay covers full screen */
+.ui-dialog-mask {
+    position: fixed !important;
+    width: 100% !important;
+    height: 100% !important;
+    top: 0 !important;
+    left: 0 !important;
+}
+
+/* Override PrimeFaces default styles */
+.ui-panelgrid.form-grid .ui-panelgrid-cell {
+    border: none;
+    padding: 8px;
+}
+
+.edit-dialog .font-bold {
+    line-height: 35px;  /* Center text vertically */
+}
+
+/* Add styles for the add sport form textareas */
+.form-grid .input-column {
+    width: 400px;  /* Match edit dialog width */
+}
+
+.form-grid textarea,
+.form-grid .ui-inputtextarea {
+    width: 100% !important;
+    min-width: 400px;
+}
+
+/* Adjust dialog width to accommodate wider textareas */
+.edit-dialog {
+    min-width: 700px !important;
+}
+
+/* Form Elements */
+.form-control:focus {
+    border-color: #1976D2;
+    box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.25);
+}
+
+/* Navigation Links */
+.nav-link {
+    color: #1976D2;
+}
+
+.nav-link:hover {
+    color: #FFA726;
+}
+
+/* Table Styles */
+.table th {
+    background-color: #1976D2;
+    color: white;
+}
+
+.table tr:nth-child(even) {
+    background-color: #F5F7FA;
+}
+
+/* Button Variations */
+.btn-outline {
+    border: 2px solid #1976D2;
+    color: #1976D2;
+    background-color: transparent;
+}
+
+.btn-outline:hover {
+    background-color: #1976D2;
+    color: white;
+}
+
+/* Special Elements */
+.highlight {
+    background-color: #FFA726;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+}
+
+.accent-border {
+    border-left: 4px solid #26A69A;
+} 
